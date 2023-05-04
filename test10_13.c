@@ -12,6 +12,10 @@ double compare(double*, int);
 
 void oppo(double*, int);
 
+int* add(int*, int*, int*, int);
+
+void arr_double(int**, int, int);
+
 int main(void) {
 	//double source[5] = { 1.1, 2.2, 3.3, 4.4, 5.5 };
 	//double target1[5];
@@ -40,6 +44,13 @@ int main(void) {
 	double arr8_3[3] = { 0 };
 	copy_arr(arr8_3, arr8 + 2, 3);
 	printf("%g %g %g\n", arr8_3[0], arr8_3[1], arr8_3[2]);
+
+	int arr9_1[] = { 2, 4, 5, 8 }, arr9_2[] = { 1, 0, 4, 6 }, arr9_3[4];
+	add(arr9_1, arr9_2, arr9_3, 4);
+	printf("%d\n", arr9_3[3]);
+
+	int arr11[3][5] = { {1,1,1,1,1},{2,2,2,2,2},{3,3,3,3,3} };
+	arr_double(arr11, 3, 5);
 
 	return 0;
 }
@@ -111,6 +122,37 @@ void oppo(double* arr, int num) {
 	for (i = 0, j = num - 1; i < num; i++, j--) {
 		oppo_arr[i] = arr[j];
 		printf("%5g", oppo_arr[i]);
+	}
+	printf("\n");
+}
+
+//10.
+int* add(int* arr1, int* arr2, int* arr3, int arrsize) {
+	int i;
+
+	for (i = 0; i < arrsize; i++)
+		arr3[i] = arr1[i] + arr2[i];
+
+	return arr3;
+}
+
+//11.
+void arr_double(int arr11[3][5], int row, int col) {
+	int i, j;
+
+	for (i = 0; i < row; i++) {
+		for (j = 0; j < col; j++) {
+			printf("%3d", arr11[i][j]);
+			arr11[i][j] *= 2;
+		}
+		printf("\n");
+	}
+
+	for (i = 0; i < row; i++) {
+		for (j = 0; j < col; j++) {
+			printf("%3d", arr11[i][j]);
+		}
+		printf("\n");
 	}
 	printf("\n");
 }
